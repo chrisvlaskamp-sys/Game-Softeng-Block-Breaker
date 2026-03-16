@@ -26,14 +26,12 @@ class Game_State:
         """Updates the game state with action"""
         name = action.get_name()
         if not name in self.players: 
-            player = Paddle(screen, position_strategy, border_strategy, color=(255, 0, 0))
-            player = Player(self.world_size, name) # create a new player
+            player = Paddle(screen, position_strategy, border_strategy, color=(255, 0, 0))  # create a new player
             self.units.append(player)              # add to units
             self.players[name] = player            # add to players too for fast lookup by name 
             
         player = self.players[name]
-        player.step()
-        player.stay_on_screen(self.world_size) 
+        player.step() 
 
 
     def draw(self, name, surface, name_textures):

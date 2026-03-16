@@ -47,6 +47,7 @@ def get_action(name,keys):
         acceleration.x += accel
     return Action(name, acceleration)
 
+
 class Name_Textures: # class to generate and store textures of user names
 
     def __init__(self):
