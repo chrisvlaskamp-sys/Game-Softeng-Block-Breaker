@@ -3,7 +3,6 @@ import zmq
 import time
 import pygame
 
-from Action import Action
 from Game_State import Game_State
 
 def main(port, host):

@@ -45,10 +45,6 @@ def get_action(name,keys):
         acceleration.x -= accel
     if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
         acceleration.x += accel
-    if keys[pygame.K_UP] or keys[pygame.K_w]:
-        acceleration.y -= accel
-    if keys[pygame.K_DOWN] or keys[pygame.K_s]:
-        acceleration.y += accel
     return Action(name, acceleration)
 
 class Name_Textures: # class to generate and store textures of user names
