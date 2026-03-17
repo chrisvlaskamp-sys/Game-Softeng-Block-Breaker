@@ -21,6 +21,9 @@ class Game_State:
         return f"world_size: {self.world_size}\nunits: {self.units}"
 
 
+    def spawn_units(self):
+        pass
+
 
     def update(self, action):
         """Updates the game state with action"""
