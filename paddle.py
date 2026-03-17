@@ -32,7 +32,7 @@ class Paddle:
     def __init__(self, screen, position_strategy, border_strategy, color=(255, 0, 0)):
         self.width = 100
         self.height = 20
-        self.speed = 6
+        self.speed = pygame.Vector2(0,0)
         self.color = color
 
         self.position = pygame.Vector2(0, 0)
@@ -40,6 +40,10 @@ class Paddle:
         self.border_strategy = border_strategy
 
         self.position_strategy.init_position(self, screen)
+    
+    def accelerate(self,acceleration):
+        self.speed += acceleration
+        self.speed *= 0.97
 
     def plot(self, screen):
         """ Plot a unit """
@@ -47,16 +51,9 @@ class Paddle:
 
     def step(self, screen):
         """ Take a step: move and possibly other actions. """
-        self.move(screen)
+        self.position += self.speed
 
-    def move(self, screen):
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_a]:
-            self.position.x -= self.speed
-        if keys[pygame.K_d]:
-            self.position.x += self.speed
-        self.border_strategy.handle_border(self, screen)
-    
+   
     
 
 

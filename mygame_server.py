@@ -20,7 +20,8 @@ def main(port, host):
     frame_duration_ms = 1000 // game_fps
     prev_time = time.time()
     actions = {}
-    game_state = Game_State(pygame.Vector2(800, 600))
+    world_size = pygame.Vector2(800, 600)
+    game_state = Game_State(world_size)
 
     while True:
         # Calculate timeout until next frame update
