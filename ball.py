@@ -3,29 +3,29 @@ from pyparsing import ABC, abstractmethod
 
 class Position_Strategy(ABC):
     @abstractmethod
-    def init_position(self, unit, screen):
+    def init_position(self, unit, world_size):
         """ Initialize position of a unit """
         ...
 
 class Border_Strategy(ABC):
     @abstractmethod
-    def handle_border(self, unit, screen):
+    def handle_border(self, unit, world_size):
         """ Handle a unit's movement at the edges of the screen. """
         ...
 
 #change to top of paddle
 class Position_Center_Start(Position_Strategy):
-    def init_position(self, unit, screen):
+    def init_position(self, unit, world_size):
         unit.position = pygame.Vector2(
-            screen.get_width() // 2,
-            screen.get_height() // 2
+            world_size.x // 2,
+            world_size.y // 2
         )
 
 #for the borders of the game
 class Border_Bounce(Border_Strategy):
-    def handle_border(self, unit, screen):
-        width = screen.get_width()
-        height = screen.get_height()
+    def handle_border(self, unit, world_size):
+        width =  world_size.x
+        height = world_size.y
 
         #left
         if unit.position.x < unit.radius:
@@ -46,7 +46,7 @@ class Border_Bounce(Border_Strategy):
 
 class Ball():
 
-    def __init__(self, screen, position_strategy, border_strategy, color=(0, 255, 0)):
+    def __init__(self, world_size, position_strategy, border_strategy, color=(0, 255, 0)):
         """ Initialize a unit """
         self.position = pygame.Vector2(0,0)
         self.speed = pygame.Vector2(4,-4)
@@ -56,24 +56,24 @@ class Ball():
         self.position_strategy = position_strategy
         self.border_strategy = border_strategy
 
-        self.position_strategy.init_position(self, screen)
+        self.position_strategy.init_position(self, world_size)
 
         #ball is in bounds
-        self.alive = True
+        self.alive = True 
         
 
     def plot(self, screen):
         """ Plot a unit """
         pygame.draw.circle(screen, self.color, (int(self.position.x), int(self.position.y)), self.radius)
 
-    def step(self, screen):
+    def step(self, world_size):
         """ Take a step: move and possibly other actions. """
-        self.move(screen)
+        self.move(world_size)
 
-    def move(self, screen):
+    def move(self, world_size):
         """ Move a unit """
         self.position += self.speed
-        alive = self.border_strategy.handle_border(self, screen)
+        alive = self.border_strategy.handle_border(self, world_size)
         if alive == False:
             self.alive = False
 

@@ -31,7 +31,7 @@ def main(name, port, host):
         
         socket.send_pyobj(get_action(name, pygame.key.get_pressed())) # send action
         if game_state:
-            game_state.draw(name,surface,name_textures) # draw while waiting for answer
+            game_state.draw(surface, name_textures) # draw while waiting for answer
         game_state = socket.recv_pyobj() # receive game_state
         #print("game_state:",game_state)        
         
@@ -39,13 +39,24 @@ def main(name, port, host):
         clock.tick(60) # run at 60 frames per second
 
 def get_action(name,keys):
+
+    if keys[pygame.K_r]:
+        return Action(name, 'reset')
+    
+    if keys[pygame.K_s]:
+        return Action(name, 'start')
+
     acceleration=pygame.Vector2(0,0)
     accel=0.5
     if keys[pygame.K_LEFT] or keys[pygame.K_a]:
         acceleration.x -= accel
+        return Action(name, 'accelerate', acceleration)
     if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
         acceleration.x += accel
-    return Action(name, acceleration)
+        return Action(name, 'accelerate', acceleration)
+    # If none of the above keys have been pressed:
+    return Action(name, 'accelerate', acceleration)
+    
 
 
 class Name_Textures: # class to generate and store textures of user names

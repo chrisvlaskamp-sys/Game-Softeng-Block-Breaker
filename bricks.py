@@ -11,7 +11,7 @@ class Block:
     def hit(self):
         self.alive = False
 
-    def draw(self, screen):
+    def plot(self, screen):
         if self.alive:
             pygame.draw.rect(screen, self.color, self.rect)
 

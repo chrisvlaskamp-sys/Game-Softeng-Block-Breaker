@@ -29,7 +29,7 @@ def main(port, host):
         timeout_ms = max(0, frame_duration_ms - elapsed_ms)
 
         # Wait efficiently for incoming messages or timeout
-        events = poller.poll(timeout=timeout_ms)
+        events = poller.poll(timeout = timeout_ms)
 
         for sock, _ in events:
             action = sock.recv_pyobj()
@@ -42,10 +42,12 @@ def main(port, host):
             update_game_state(game_state, actions)
 
 def update_game_state(game_state, actions):
+    """Updates the game state for all units (paddles, balls, bricks, etc.) everytime the frame time hase elapsed.."""
     for name, action in actions.items():
         if name != '_': # ignore user '_'
-            game_state.update(action)
-    game_state.spawn_units()
+            game_state.update_player(action) #updates the state for each player individually
+    game_state.update_rest() # updates the state of all balls and bricks once per frame time 
+    
             
 if __name__ == "__main__":
     port = 2345
