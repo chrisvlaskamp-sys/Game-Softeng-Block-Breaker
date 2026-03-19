@@ -47,9 +47,6 @@ class Game_State:
         return f"world_size: {self.world_size}\nunits: {self.units}"
 
 
-    
-
-
     def update_player(self, action):
         """Updates the game state by carrying out the action for the corresponding player"""
 
@@ -59,7 +56,6 @@ class Game_State:
         if action.action_type == 'reset' and self.started == True:
             self.reset_game_state()
 
-      
         name = action.get_name()
         if not name in self.players: 
             self.add_player(name) 
@@ -68,9 +64,7 @@ class Game_State:
         if action.action_type == 'accelerate': 
             player.accelerate(action.get_acceleration())
             player.step(self.world_size) 
-            
-
-        #in case there are multiple balls checks if ball is 'alive'(still in game bounds) if not it gets removed from list
+              
     def update_rest(self):
         for ball in self.balls:
             ball.step(self.world_size)
@@ -86,8 +80,10 @@ class Game_State:
                     ball.speed.y *= -1
                     #when powerupblock(yellow) is hit you get an extra ball
                     if isinstance(brick, PowerUpBlock): 
-                        self.add_ball() 
+                        starting_position = pygame.Vector2(brick.rect.center)
+                        self.add_ball(position=starting_position) 
 
+            #in case there are multiple balls checks if ball is 'alive'(still in bounds) if not it gets removed from list
             if not ball.alive:
                 self.balls.remove(ball)
                 self.units.remove(ball)
