@@ -83,7 +83,7 @@ class Game_State:
                         starting_position = pygame.Vector2(brick.rect.center)
                         self.add_ball(position=starting_position) 
 
-            #in case there are multiple balls checks if ball is 'alive'(still in bounds) if not it gets removed from list
+            #in case there are multiple balls checks if ball is alive(still in bounds) if not it gets removed from list
             if not ball.alive:
                 self.balls.remove(ball)
                 self.units.remove(ball)
