@@ -84,9 +84,9 @@ class Game_State:
                 if brick.alive and ball_rect.colliderect(brick.rect):
                     brick.hit()
                     ball.speed.y *= -1
-                #when powerupblock(yellow) is hit you get an extra ball
-                if isinstance(brick, PowerUpBlock): 
-                    self.add_ball() 
+                    #when powerupblock(yellow) is hit you get an extra ball
+                    if isinstance(brick, PowerUpBlock): 
+                        self.add_ball() 
 
             if not ball.alive:
                 self.balls.remove(ball)
@@ -106,12 +106,14 @@ class Game_State:
         self.units.append(player)              # add to units
         self.players[name] = player            # add to players too for fast lookup by name 
 
-    def add_ball(self, color = None):
+    def add_ball(self, color = None, position = None):
         """ Adds a ball with a name and a color"""
         if color == None:
             ball = Ball(self.world_size, Position_Center_Start(), Border_Bounce()) 
         else: 
             ball = Ball(self.world_size, Position_Center_Start(), Border_Bounce(), color) 
+        if position != None:
+            ball.position = position
         self.balls.append(ball)
         self.units.append(ball)
 
