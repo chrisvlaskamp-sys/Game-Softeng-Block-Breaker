@@ -1,6 +1,4 @@
 import pygame
-import paddle 
-import ball 
 import random 
 
 from ball import Ball, Position_Center_Start, Border_Bounce 
@@ -87,7 +85,7 @@ class Game_State:
                     brick.hit()
                     ball.speed.y *= -1
                 if isinstance(brick, PowerUpBlock):
-                    power_up_ball = Ball(screen, Position_Center_Start(), Border_Bounce())
+                    power_up_ball = Ball(self.world_size, Position_Center_Start(), Border_Bounce())
                     power_up_ball.position = pygame.Vector2(brick.rect.center)
                     power_up_ball.speed.x *= -1
                     balls.append(power_up_ball)
