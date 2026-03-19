@@ -1,7 +1,6 @@
 import pygame
 from ball import Ball, Position_Center_Start, Border_Bounce 
 from paddle import Paddle, Position_Start, Border_Stop
-from bricks import NormalBlock, HardBlock, PowerUpBlock
 
 # initialize pygame window
 pygame.init()
@@ -9,22 +8,11 @@ screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
 clock = pygame.time.Clock()
 pygame.display.set_caption("Block Breaker")
 
+#change to only have one kind of unit
 # create units
 nr_units = 1
 balls = [Ball(screen, Position_Center_Start(), Border_Bounce())]
 paddle = Paddle(screen, Position_Start(), Border_Stop())
-
-bricks = []
-for row in range(5):
-    for col in range(10):
-        x = col * 75 + 50
-        y = row * 35 + 50
-        if row == 0:
-            bricks.append(HardBlock(x, y)) #3
-        elif row == 4:
-            bricks.append(PowerUpBlock(x, y)) #power
-        else:
-            bricks.append(NormalBlock(x, y)) #1
 
 running = True
 while running:  # run until the user closes the window
@@ -39,10 +27,6 @@ while running:  # run until the user closes the window
 
     paddle.step(screen)
     paddle.plot(screen)
-
-    for brick in bricks:
-        brick.draw(screen)
-
     #in case there are multiple balls checks if ball is 'alive'(still in game bounds) if not it gets removed from list
     for ball in balls[:]:
         ball.step(screen)
@@ -52,21 +36,10 @@ while running:  # run until the user closes the window
         if ball_rect.colliderect(paddle_rect):
             ball.speed.y *= -1
 
-        for brick in bricks:
-            if brick.alive and ball_rect.colliderect(brick.rect):
-                brick.hit()
-                ball.speed.y *= -1
-            if isinstance(brick, PowerUpBlock):
-                power_up_ball = Ball(screen, Position_Center_Start(), Border_Bounce())
-                power_up_ball.position = pygame.Vector2(brick.rect.center)
-                power_up_ball.speed.x *= -1
-                balls.append(power_up_ball)
-
         if not ball.alive:
             balls.remove(ball)
             continue
         ball.plot(screen)
-
     pygame.display.flip()  # update the screen
     clock.tick(60)
 pygame.quit()
