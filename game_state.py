@@ -84,11 +84,9 @@ class Game_State:
                 if brick.alive and ball_rect.colliderect(brick.rect):
                     brick.hit()
                     ball.speed.y *= -1
-                if isinstance(brick, PowerUpBlock):
-                    power_up_ball = Ball(self.world_size, Position_Center_Start(), Border_Bounce())
-                    power_up_ball.position = pygame.Vector2(brick.rect.center)
-                    power_up_ball.speed.x *= -1
-                    self.balls.append(power_up_ball)
+                #when powerupblock(yellow) is hit you get an extra ball
+                if isinstance(brick, PowerUpBlock): 
+                    self.add_ball() 
 
             if not ball.alive:
                 self.balls.remove(ball)
