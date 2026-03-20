@@ -49,7 +49,7 @@ class Ball():
     def __init__(self, world_size, position_strategy, border_strategy, color=(0, 255, 0)):
         """ Initialize a unit """
         self.position = pygame.Vector2(0,0)
-        self.speed = pygame.Vector2(4,-4)
+        self.speed = pygame.Vector2(4,4)
         self.color = color
         self.radius = 10
 
