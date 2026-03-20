@@ -4,6 +4,7 @@ import random
 from ball import Ball, Position_Center_Start, Border_Bounce 
 from paddle import Paddle, Position_Start, Border_Stop
 from bricks import NormalBlock, HardBlock, PowerUpBlock
+from points import Points
 
 """
 Part of the code in this file has been adapted from the game_state.py example code. 
@@ -20,26 +21,35 @@ class Game_State:
         self.balls = [] # list of balls, 
         self.bricks = [] # list of bricks 
         self.units = []
+        self.points = Points()
         
     def start_game(self):
         """starts a game with players and a playing field of size world_size, """
         self.started = True 
-        self.balls = [Ball(self.world_size, Position_Center_Start(), Border_Bounce())] # starting with one ball
+        self.points.reset()
+        self.balls = [Ball(self.world_size, Position_Center_Start(), Border_Bounce())]
+        self.units = self.paddles[:]  # reset units maar behoud paddles
+        self.units += self.balls
 
         #Initiate bricks: 
+        percentages = {
+        NormalBlock: 60,   # 60%
+        HardBlock: 30,     # 30%
+        PowerUpBlock: 10,  # 10%
+        }
+
         self.bricks = []
         for row in range(5):
             for col in range(10):
                 x = col * 75 + 50
                 y = row * 35 + 50
-                if row == 0:
-                    self.bricks.append(HardBlock(x, y)) #3
-                elif row == 4:
-                    self.bricks.append(PowerUpBlock(x, y)) #power
-                else:
-                    self.bricks.append(NormalBlock(x, y)) #1
-
-        self.units = self.balls + self.bricks + self.paddles # list containing all units (balls, players and bricks)
+                brick_type = random.choices(
+                    list(percentages.keys()),
+                    weights=list(percentages.values())
+                )[0]
+                brick = brick_type(x, y)
+                self.bricks.append(brick)
+                self.units.append(brick)
 
 
     def __repr__(self):
@@ -66,9 +76,10 @@ class Game_State:
             player.step(self.world_size) 
               
     def update_rest(self):
-        for ball in self.balls:
+        for ball in self.balls[:]:
             ball.step(self.world_size)
             ball_rect = pygame.Rect(ball.position.x - ball.radius, ball.position.y - ball.radius, ball.radius * 2, ball.radius * 2)
+            
             for paddle in self.paddles: 
                 paddle_rect = pygame.Rect(paddle.position.x, paddle.position.y, paddle.width, paddle.height)
                 if ball_rect.colliderect(paddle_rect):
@@ -77,17 +88,27 @@ class Game_State:
             for brick in self.bricks:
                 if brick.alive and ball_rect.colliderect(brick.rect):
                     brick.hit()
+                    if ball.speed.y > 0:
+                        ball.position.y = brick.rect.top - ball.radius
+                    else:
+                        ball.position.y = brick.rect.bottom + ball.radius
                     ball.speed.y *= -1
-                    #when powerupblock(yellow) is hit you get an extra ball
-                    if isinstance(brick, PowerUpBlock): 
+                    self.points.add(brick)
+                    if isinstance(brick, PowerUpBlock) and not brick.alive:
                         starting_position = pygame.Vector2(brick.rect.center)
-                        self.add_ball(position=starting_position) 
+                        self.add_ball(position=starting_position)
+                    break
 
-            #in case there are multiple balls checks if ball is alive(still in bounds) if not it gets removed from list
             if not ball.alive:
                 self.balls.remove(ball)
                 self.units.remove(ball)
-                
+                continue
+
+        # Opruimen van dode bricks, buiten de ball-loop
+        for brick in self.bricks[:]:
+            if not brick.alive:
+                self.bricks.remove(brick)
+                self.units.remove(brick)
 
     def add_player(self, name, color = None): 
         """ Adds a player/paddle with a name and a color"""
@@ -115,6 +136,7 @@ class Game_State:
 
     def draw(self, surface, name_textures):
         """ Visualises all paddles, balls, bricks etc. """
+        self.points.draw(surface)
         rect = pygame.Rect(pygame.Vector2(0, 0), self.world_size)
         white = (255, 255, 255)
         pygame.draw.rect(surface, white, rect, 2)
@@ -137,4 +159,5 @@ class Game_State:
         self.balls = [] # list of balls, 
         self.bricks = [] # list of bricks 
         self.units = []
+        self.points.reset()
        
