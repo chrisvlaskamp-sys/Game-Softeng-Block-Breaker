@@ -59,19 +59,39 @@ class Ball():
         self.position_strategy.init_position(self, world_size)
 
         #ball is in bounds
-        self.alive = True 
+        self.alive = True
         
+        # trail: 
+        self.trail = []
+        self.trail_length = 10
 
     def plot(self, screen):
         """ Plot a unit """
+        # trail
+        for index, pos in enumerate(self.trail):
+            size = (index + 1) / len(self.trail)  # range (0,1]
+            color = (255, 0, 0)
+            radius = max(1, int(self.radius * size))
+            pygame.draw.circle(screen, color , (int(pos.x), int(pos.y)), radius)  
+        # ball 
         pygame.draw.circle(screen, self.color, (int(self.position.x), int(self.position.y)), self.radius)
 
+
+  
+        
     def step(self, world_size):
         """ Take a step: move and possibly other actions. """
         self.move(world_size)
 
     def move(self, world_size):
         """ Move a unit """
+
+        # add current position to trail 
+        self.trail.append(self.position.copy())
+        # remove oldest element in trail
+        while len(self.trail) > self.trail_length:
+            self.trail.pop(0)
+
         self.position += self.speed
         alive = self.border_strategy.handle_border(self, world_size)
         if alive == False:
