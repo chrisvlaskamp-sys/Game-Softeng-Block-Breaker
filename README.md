@@ -101,7 +101,7 @@ Op elk moment tijdens het spel kunt u besluiten het spel af te breken en terug t
 
 Voor elk blokje dat u of uw medespelers vertnietigen krijgt u punten. Het totaal aantal punten wordt linksboven weergegeven. U heeft het spel gewonnen zodra u met het balletje alle steentjes heeft vertnietigd. 
 Meer over de verschillende regels en objecten in het spel leest u in het hoofdstuk *spelonderdelen*. 
-
+![](/Screenshot_gameplay.png)
 
 ## Spelonderdelen
 #### paddles:
@@ -214,6 +214,7 @@ Once the game starts, the ball immediately flies across the screen at full speed
 At any time during the game, you can stop and return to the start screen with `r`.
 
 You earn points for each brick you or your fellow players destroy. The total points are shown in the top-left corner. You win the game once all bricks are destroyed. You can find more information about rules and objects in the game is in the chapter *Game Components*.
+![](/Screenshot_gameplay.png)
 
 ## Game Components
 
