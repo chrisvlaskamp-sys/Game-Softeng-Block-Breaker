@@ -40,7 +40,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Connecting to port '2345' of host '127.0.0.1'.
 ```
 Daarnaast opent ook een mygame-venster met het startscherm, zodat u kunt beginnen met spelen (zie afbeelding).  Meer spelers toevoegen kan op dezelfde manier als hierboven beschreven. 
-![](/screenshot_start_screen.png)
+![](/Screenshot_start_screen.png)
 
 
 
@@ -82,7 +82,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Connecting to port '<port>' of host '< IP-address >'.
 ```
 Daarnaast opent ook een mygame-venster met het startscherm op de computer van deze speler, zodat u kunt beginnen met spelen (zie afbeelding).  Meer spelers toevoegen kan op dezelfde manier als hierboven beschreven. 
-![](/screenshot_start_screen.png)
+![](/Screenshot_start_screen.png)
 
 ## Het spel spelen
 
@@ -160,7 +160,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Connecting to port '2345' of host '127.0.0.1'.
 
 Additionally, a mygame window opens with the start screen, allowing you to begin playing (see image). More players can be added in the same way as described above.
-![](/screenshot_start_screen.png)
+![](/Screenshot_start_screen.png)
 
 #### Playing on multiple computers
 **Preparation**
@@ -197,7 +197,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Connecting to port '<port>' of host '<IP-address>'.
 ```
 Additionally, a mygame window opens with the start screen on that player's computer, allowing them to begin playing (see image). More players can be added in the same way as described above.
-![](/screenshot_start_screen.png)
+![](/Screenshot_start_screen.png)
 
 ## Playing the game
 
