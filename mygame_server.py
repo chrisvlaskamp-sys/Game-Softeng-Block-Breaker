@@ -32,7 +32,6 @@ def main(port, host):
         events = poller.poll(timeout = timeout_ms)
 
         for sock, _ in events:
-            print("got message")
             action = sock.recv_pyobj()
             actions[action.get_name()] = action
             sock.send_pyobj(game_state)
