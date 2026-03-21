@@ -40,6 +40,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Connecting to port '2345' of host '127.0.0.1'.
 ```
 Daarnaast opent ook een mygame-venster met het startscherm, zodat u kunt beginnen met spelen (zie afbeelding).  Meer spelers toevoegen kan op dezelfde manier als hierboven beschreven. 
+
 ![](/Screenshot_start_screen.png)
 
 
@@ -82,6 +83,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Connecting to port '<port>' of host '< IP-address >'.
 ```
 Daarnaast opent ook een mygame-venster met het startscherm op de computer van deze speler, zodat u kunt beginnen met spelen (zie afbeelding).  Meer spelers toevoegen kan op dezelfde manier als hierboven beschreven. 
+
 ![](/Screenshot_start_screen.png)
 
 ## Het spel spelen
@@ -101,6 +103,7 @@ Op elk moment tijdens het spel kunt u besluiten het spel af te breken en terug t
 
 Voor elk blokje dat u of uw medespelers vertnietigen krijgt u punten. Het totaal aantal punten wordt linksboven weergegeven. U heeft het spel gewonnen zodra u met het balletje alle steentjes heeft vertnietigd. 
 Meer over de verschillende regels en objecten in het spel leest u in het hoofdstuk *spelonderdelen*. 
+
 ![](/Screenshot_gameplay.png)
 
 ## Spelonderdelen
@@ -160,6 +163,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Connecting to port '2345' of host '127.0.0.1'.
 
 Additionally, a mygame window opens with the start screen, allowing you to begin playing (see image). More players can be added in the same way as described above.
+
 ![](/Screenshot_start_screen.png)
 
 #### Playing on multiple computers
@@ -197,6 +201,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Connecting to port '<port>' of host '<IP-address>'.
 ```
 Additionally, a mygame window opens with the start screen on that player's computer, allowing them to begin playing (see image). More players can be added in the same way as described above.
+
 ![](/Screenshot_start_screen.png)
 
 ## Playing the game
@@ -214,6 +219,7 @@ Once the game starts, the ball immediately flies across the screen at full speed
 At any time during the game, you can stop and return to the start screen with `r`.
 
 You earn points for each brick you or your fellow players destroy. The total points are shown in the top-left corner. You win the game once all bricks are destroyed. You can find more information about rules and objects in the game is in the chapter *Game Components*.
+
 ![](/Screenshot_gameplay.png)
 
 ## Game Components
