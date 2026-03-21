@@ -111,11 +111,12 @@ class Game_State:
         for ball in self.balls[:]:
             ball.step(self.world_size)
             ball_rect = pygame.Rect(ball.position.x - ball.radius, ball.position.y - ball.radius, ball.radius * 2, ball.radius * 2)
-            
+            has_collided = False
             for paddle in self.paddles: 
                 paddle_rect = pygame.Rect(paddle.position.x, paddle.position.y, paddle.width, paddle.height)
                 if ball_rect.colliderect(paddle_rect):
                     ball.speed.y *= -1
+                    break
 
             for brick in self.bricks:
                 if brick.alive and ball_rect.colliderect(brick.rect):
@@ -136,7 +137,8 @@ class Game_State:
                 self.units.remove(ball)
                 continue
 
-        # Opruimen van dode bricks, buiten de ball-loop
+        # Clearing up dead bricks, outside of ball loop
+
         for brick in self.bricks[:]:
             if not brick.alive:
                 self.bricks.remove(brick)
