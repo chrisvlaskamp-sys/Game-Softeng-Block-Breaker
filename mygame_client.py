@@ -4,6 +4,8 @@ import pygame
 
 from Action import Action
 from game_state import Game_State
+prev_mouse_pressed = (False, False, False)
+
 
 def main(name, port, host):
     # connect to server
@@ -39,15 +41,41 @@ def main(name, port, host):
         clock.tick(60) # run at 60 frames per second
 
 def get_action(name,keys):
-
+    #reset game
     if keys[pygame.K_r]:
         return Action(name, 'reset')
+    pos = pygame.mouse.get_pos()
+
+
+    # change difficulty/ball speed
+    global prev_mouse_pressed
+    mouse = pygame.mouse.get_pressed()
+    if mouse[0] and not prev_mouse_pressed[0]:
+        prev_mouse_pressed = mouse
+        pos = pygame.mouse.get_pos()
+        return Action(name, 'mouse', pos)
+    prev_mouse_pressed = mouse
+
+    if keys[pygame.MOUSEBUTTONDOWN]:
+        return Action(name, 'mouse', event.pos)
+    if keys[pygame.K_1]:
+        return Action(name, 'difficulty', 0)
+    if keys[pygame.K_2]:
+        return Action(name, 'difficulty', 1)
+    if keys[pygame.K_3]:
+        return Action(name, 'difficulty', 2)
+    if keys[pygame.K_4]:
+        return Action(name, 'difficulty', 3)
     
+    #start game
     if keys[pygame.K_s]:
         return Action(name, 'start')
 
+
+    # paddle acceleration:
     acceleration=pygame.Vector2(0,0)
     accel=0.5
+
     if keys[pygame.K_LEFT] or keys[pygame.K_a]:
         acceleration.x -= accel
         return Action(name, 'accelerate', acceleration)

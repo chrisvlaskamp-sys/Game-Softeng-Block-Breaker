@@ -20,3 +20,7 @@ class Action:
     def get_acceleration(self):
         return self.action_value 
     
+    def get_value(self):
+        return self.action_value 
+    
+    

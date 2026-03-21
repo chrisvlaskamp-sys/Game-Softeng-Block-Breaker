@@ -17,7 +17,7 @@ class Border_Strategy(ABC):
 class Position_Center_Start(Position_Strategy):
     def init_position(self, unit, world_size):
         unit.position = pygame.Vector2(
-            world_size.x // 2,
+             (world_size.x - world_size.y)//2,
             world_size.y // 2
         )
 
@@ -46,10 +46,10 @@ class Border_Bounce(Border_Strategy):
 
 class Ball():
 
-    def __init__(self, world_size, position_strategy, border_strategy, color=(0, 255, 0)):
+    def __init__(self, world_size, position_strategy, border_strategy, speed_multiplier, color=(0, 255, 0)):
         """ Initialize a unit """
         self.position = pygame.Vector2(0,0)
-        self.speed = pygame.Vector2(4,4)
+        self.speed = speed_multiplier * pygame.Vector2(1,1)
         self.color = color
         self.radius = 10
 
