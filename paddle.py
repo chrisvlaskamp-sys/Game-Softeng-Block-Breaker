@@ -53,7 +53,7 @@ class Paddle:
     def plot_text(self, surface, name, name_textures):
         name_texture = name_textures.get_texture(name)
         text_offset = pygame.Vector2(name_texture.get_size() )
-        text_offset.x /= -2
+        text_offset.x = (text_offset.x - self.width ) // 2
         text_offset.y += self.height  
         surface.blit(name_texture, self.position - text_offset )
 

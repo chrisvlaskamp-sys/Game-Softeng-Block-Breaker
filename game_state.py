@@ -100,7 +100,7 @@ class Game_State:
 
         if action.action_type == 'accelerate': 
             player.accelerate(action.get_acceleration())
-            player.step(self.world_size) 
+            player.step(self.world_size) # also checks for collisions with edges of the playing field
 
         if self.started == True and len(self.bricks) == 0:
             self.ended = True 
@@ -112,12 +112,15 @@ class Game_State:
             ball.step(self.world_size)
             ball_rect = pygame.Rect(ball.position.x - ball.radius, ball.position.y - ball.radius, ball.radius * 2, ball.radius * 2)
             has_collided = False
+            
+            # check for colission with paddles
             for paddle in self.paddles: 
                 paddle_rect = pygame.Rect(paddle.position.x, paddle.position.y, paddle.width, paddle.height)
                 if ball_rect.colliderect(paddle_rect):
                     ball.speed.y *= -1
                     break
 
+            # check for colission with bricks          
             for brick in self.bricks:
                 if brick.alive and ball_rect.colliderect(brick.rect):
                     brick.hit()
