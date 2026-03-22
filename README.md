@@ -18,7 +18,7 @@ Om het spel te kunnen spelen moet python geïnstalleerd zijn op uw computer. Daa
 #### Spelen op de eigen computer
 **server opstarten:**
 
-Als u op één computer Block Breaker wilt spelen, moet u eerst de server opstarten door in de terminal het volgende commando uitvoeren:
+Als u op één computer Block Breaker wilt spelen, moet u eerst de server opstarten door in de terminal het onderstaande commando uitvoeren. Let hierbij op dat u in de juiste directory/folder zit.
 
 `$ python mygame_server.py `
 
@@ -64,7 +64,7 @@ Windows: `ipconfig `
 
 **de server opstarten:**
 
-Zodra u het IP-addres weet, kunt u met het onderstaande commando de server starten. Als port kunt u ieder getal boven 2000 invullen, bijvoorbeeld 2345. 
+Zodra u het IP-addres weet, kunt u met het onderstaande commando de server starten. Let hierbij op dat u wel in de juiste directory/folder zit. Als port kunt u ieder getal boven 2000 invullen, bijvoorbeeld 2345. 
 
 `$ python mygame_server.py <port>  < uw IP-addres >  ` 
 
@@ -77,7 +77,7 @@ Waiting for clients on port '<port>' on host '<IP-adress>'.
 
 **spelers toevoegen:**
 
-Spelers toevoegen kan door het onderstaande commando uit te voeren, in de terminal van een andere computer op hetzelfde wifi-netwerk of in een nieuw tabblad van de terminal. let hierbij goed op dat de port en het IP-addres overeenkomen met die van de server. 
+Spelers toevoegen kan door het onderstaande commando uit te voeren, in de terminal van een andere computer op hetzelfde wifi-netwerk of in een nieuw tabblad van de terminal. let hierbij goed op dat de port en het IP-addres overeenkomen met die van de server en dat u de juiste directory gebruikt.
 
 `python mygame_client.py <naam speler>  <port> <IP-addres server>  ` 
 
@@ -145,7 +145,7 @@ To play the game, Python must be installed on your computer. Additionally, you m
 #### Playing on your own computer
 **Starting the server:**
 
-If you want to play Block Breaker on a single computer, you must first start the server by running the following command in the terminal:
+If you want to play Block Breaker on a single computer, you must first start the server by running the following command in the terminal. Make sure you're in the correct directory. 
 
 `$ python mygame_server.py `
 
@@ -186,7 +186,7 @@ Windows: `ipconfig `
 
 **Starting the server:**
 
-Once you know the IP address, start the server with the command below. For the port, you can use any number above 2000, e.g., 2345.
+Once you know the IP address, start the server with the command below. For the port, you can use any number above 2000, e.g., 2345. 
 
 `$ python mygame_server.py <port>  <your IP address>  `
 
@@ -199,7 +199,7 @@ Waiting for clients on port '<port>' on host '<IP-address>'.
 
 **Adding players:**
 
-Players can be added by running the following command in the terminal of another computer on the same Wi-Fi network or in a new terminal tab. Make sure the port and IP address match those of the server. 
+Players can be added by running the following command in the terminal of another computer on the same Wi-Fi network or in a new terminal tab. Make sure the port and IP address match those of the server and that you're using the correct directory. 
 
 `python mygame_client.py <player name>  <port> <server IP address>  `
 
