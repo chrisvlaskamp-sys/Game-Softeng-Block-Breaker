@@ -16,7 +16,7 @@ Om het spel te kunnen spelen moet python geïnstalleerd zijn op uw computer. Daa
 `$ pip install pyparsing`
 
 #### Spelen op de eigen computer
-**server opstarten**
+**server opstarten:**
 
 Als u op één computer Block Breaker wilt spelen, moet u eerst de server opstarten door in de terminal het volgende commando uitvoeren:
 
@@ -29,7 +29,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Waiting for clients on port '2345' on host '127.0.0.1'.
 ``` 
 
-**spelers toevoegen**
+**spelers toevoegen:**
 
 De volgende stap is het toevoegen van spelers aan het spel. Dat kan door in een **nieuw tabblad van de terminal** het volgende commando uit te voeren:
 
@@ -143,7 +143,7 @@ To play the game, Python must be installed on your computer. Additionally, you m
 `$ pip install pyparsing`
 
 #### Playing on your own computer
-**Starting the server**
+**Starting the server:**
 
 If you want to play Block Breaker on a single computer, you must first start the server by running the following command in the terminal:
 
@@ -156,7 +156,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Waiting for clients on port '2345' on host '127.0.0.1'.
 ```
 
-**Adding players**
+**Adding players:**
 
 The next step is adding players to the game. This can be done by running the following command in a **new terminal tab**:
 
@@ -174,7 +174,7 @@ Additionally, a mygame window opens with the start screen, allowing you to begin
 ![](/Screenshot_start_screen.png)
 
 #### Playing on multiple computers
-**Preparation**
+**Preparation:**
 
 To play Block Breaker on multiple computers simultaneously, all computers must be connected to the same Wi-Fi network.
 
@@ -184,7 +184,7 @@ Linux: ` $ ip a `
 
 Windows: `ipconfig `
 
-**Starting the server**
+**Starting the server:**
 
 Once you know the IP address, start the server with the command below. For the port, you can use any number above 2000, e.g., 2345.
 
@@ -197,7 +197,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Waiting for clients on port '<port>' on host '<IP-address>'.
 ```
 
-**Adding players**
+**Adding players:**
 
 Players can be added by running the following command in the terminal of another computer on the same Wi-Fi network or in a new terminal tab. Make sure the port and IP address match those of the server. 
 
