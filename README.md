@@ -16,7 +16,8 @@ Om het spel te kunnen spelen moet python geïnstalleerd zijn op uw computer. Daa
 `$ pip install pyparsing`
 
 #### Spelen op de eigen computer
-**server opstarten:**
+**server opstarten**
+
 Als u op één computer Block Breaker wilt spelen, moet u eerst de server opstarten door in de terminal het volgende commando uitvoeren:
 
 `$ python mygame_server.py `
@@ -28,7 +29,8 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Waiting for clients on port '2345' on host '127.0.0.1'.
 ``` 
 
-**spelers toevoegen:**
+**spelers toevoegen**
+
 De volgende stap is het toevoegen van spelers aan het spel. Dat kan door in een **nieuw tabblad van de terminal** het volgende commando uit te voeren:
 
 `python mygame_client.py <naam speler>  ` 
@@ -49,7 +51,8 @@ Daarnaast opent ook een mygame-venster met het startscherm, zodat u kunt beginne
 
 
 #### Spelen op meerdere computers 
-**voorbereiding**
+**voorbereiding:**
+
 Als u op meerdere computers tegelijk Block breaker wilt spelen, moet u er allereerst voor zorgen dat alle computers verbonden zijn met hetzelfde wifi-netwerk. Het maakt niet uit of deze verbinding via kabel of draadloos gemaakt wordt. 
 
 Voordat u de server op start moet u eerst het IP-addres achterhalen van de computer waarop u de server wilt starten. 
@@ -59,7 +62,8 @@ Linux: ` $ ip a `
 
 Windows: `ipconfig `
 
-**de server opstarten**
+**de server opstarten:**
+
 Zodra u het IP-addres weet, kunt u met het onderstaande commando de server starten. Als port kunt u ieder getal boven 2000 invullen, bijvoorbeeld 2345. 
 
 `$ python mygame_server.py <port>  < uw IP-addres >  ` 
@@ -71,7 +75,8 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Waiting for clients on port '<port>' on host '<IP-adress>'.
 ``` 
 
-**spelers toevoegen**
+**spelers toevoegen:**
+
 Spelers toevoegen kan door het onderstaande commando uit te voeren, in de terminal van een andere computer op hetzelfde wifi-netwerk of in een nieuw tabblad van de terminal. let hierbij goed op dat de port en het IP-addres overeenkomen met die van de server. 
 
 `python mygame_client.py <naam speler>  <port> <IP-addres server>  ` 
@@ -138,7 +143,8 @@ To play the game, Python must be installed on your computer. Additionally, you m
 `$ pip install pyparsing`
 
 #### Playing on your own computer
-**Starting the server:**
+**Starting the server**
+
 If you want to play Block Breaker on a single computer, you must first start the server by running the following command in the terminal:
 
 `$ python mygame_server.py `
@@ -150,7 +156,8 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
 Waiting for clients on port '2345' on host '127.0.0.1'.
 ```
 
-**Adding players:**
+**Adding players**
+
 The next step is adding players to the game. This can be done by running the following command in a **new terminal tab**:
 
 `python mygame_client.py <player name>  `
@@ -168,6 +175,7 @@ Additionally, a mygame window opens with the start screen, allowing you to begin
 
 #### Playing on multiple computers
 **Preparation**
+
 To play Block Breaker on multiple computers simultaneously, all computers must be connected to the same Wi-Fi network.
 
 Before starting the server, you must first find the IP address of the computer on which you want to run the server. Depending on your operating system, you can use one of the following commands to find the IP address:
@@ -177,6 +185,7 @@ Linux: ` $ ip a `
 Windows: `ipconfig `
 
 **Starting the server**
+
 Once you know the IP address, start the server with the command below. For the port, you can use any number above 2000, e.g., 2345.
 
 `$ python mygame_server.py <port>  <your IP address>  `
@@ -189,6 +198,7 @@ Waiting for clients on port '<port>' on host '<IP-address>'.
 ```
 
 **Adding players**
+
 Players can be added by running the following command in the terminal of another computer on the same Wi-Fi network or in a new terminal tab. Make sure the port and IP address match those of the server. 
 
 `python mygame_client.py <player name>  <port> <server IP address>  `
